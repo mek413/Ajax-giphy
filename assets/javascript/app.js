@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var comicChar = ["superman","batman","the flash","joker"];
+    var comicChar = ["superman","batman","the flash","joker","hulk","captain america","wonder woman","spider man","iron man","dr strange","silver surfer","doctor doom","lex luthor","magneto"];
     function generateButtons(){
         $(".buttons-div").empty();
 
@@ -13,8 +13,10 @@ $(document).ready(function(){
     };
     function displayGifs(){
         $("#gifs-div").empty();
+        $('button').css({backgroundColor: 'red'});
+        $(this).css({backgroundColor: 'black'});
         var comicCharacter = $(this).attr("data-name");
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + comicCharacter + "&apikey=cdCHK1Q5574PUjuAh3oJwy6x6FwAk2eU&rating=g&limit=10";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + comicCharacter + "&apikey=cdCHK1Q5574PUjuAh3oJwy6x6FwAk2eU&rating=g&limit=9";
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -49,7 +51,6 @@ $(document).ready(function(){
     };
     $("#add-character").on("click", function(event){
         event.preventDefault();
-
         var character = $("#character-input").val().trim().toLowerCase();
         comicChar.push(character);
         generateButtons();
